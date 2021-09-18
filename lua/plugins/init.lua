@@ -332,4 +332,13 @@ return packer.startup(function()
          require("core.mappings").vim_fugitive()
       end,
    }
+
+   use {
+      'dstein64/vim-startuptime',
+      cmd = 'StartupTime',
+      config = function()
+        vim.g.startuptime_tries = 10
+        vim.g.startuptime_exe_args = { '+let g:auto_session_enabled = 0' }
+      end,
+    }
 end)

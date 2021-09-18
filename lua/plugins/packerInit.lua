@@ -39,8 +39,13 @@ packer.init {
    git = {
       clone_timeout = 600, -- Timeout, in seconds, for git clones
    },
+   max_jobs = 20,
    auto_clean = true,
    compile_on_sync = true,
+   profile = {
+      enable = true,
+      threshold = 1,
+   },
    --    auto_reload_compiled = true
 }
 

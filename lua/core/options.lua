@@ -1,6 +1,9 @@
 local opt = vim.opt
 local g = vim.g
 
+-- HACK: see https://github.com/wbthomason/packer.nvim/issues/180
+vim.fn.setenv('MACOSX_DEPLOYMENT_TARGET', '10.15')
+
 -- export user config as a global varibale
 g.main_config = "config"
 
