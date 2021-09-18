@@ -334,11 +334,11 @@ return packer.startup(function()
    }
 
    use {
-      'dstein64/vim-startuptime',
-      cmd = 'StartupTime',
+      "dstein64/vim-startuptime",
+      cmd = "StartupTime",
       config = function()
-        vim.g.startuptime_tries = 10
-        vim.g.startuptime_exe_args = { '+let g:auto_session_enabled = 0' }
+         vim.g.startuptime_tries = 10
+         vim.g.startuptime_exe_args = { "+let g:auto_session_enabled = 0" }
       end,
-    }
+   }
 end)
