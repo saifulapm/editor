@@ -128,15 +128,15 @@ return packer.startup(function()
    }
 
    use {
-     'kabouzeid/nvim-lspinstall',
-     module = 'lspinstall',
-     requires = 'nvim-lspconfig',
-     config = function()
-       require('lspinstall').post_install_hook = function()
-         require("plugins.configs.lspconfig").setup_servers()
-         vim.cmd 'bufdo e'
-       end
-     end,
+      "kabouzeid/nvim-lspinstall",
+      module = "lspinstall",
+      requires = "nvim-lspconfig",
+      config = function()
+         require("lspinstall").post_install_hook = function()
+            require("plugins.configs.lspconfig").setup_servers()
+            vim.cmd "bufdo e"
+         end
+      end,
    }
 
    use {

@@ -59,23 +59,23 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 local M = {}
 
 M.setup_servers = function()
-  local install_ok, lspinstall = pcall(require, "lspinstall")
-  if not install_ok then
-     return
-  end
+   local install_ok, lspinstall = pcall(require, "lspinstall")
+   if not install_ok then
+      return
+   end
 
-  lspinstall.setup()
-  local servers = lspinstall.installed_servers() 
-  for _, lsp in ipairs(servers) do
-     nvim_lsp[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        -- root_dir = vim.loop.cwd,
-        flags = {
-           debounce_text_changes = 150,
-        },
-     }
-  end
+   lspinstall.setup()
+   local servers = lspinstall.installed_servers()
+   for _, lsp in ipairs(servers) do
+      nvim_lsp[lsp].setup {
+         on_attach = on_attach,
+         capabilities = capabilities,
+         -- root_dir = vim.loop.cwd,
+         flags = {
+            debounce_text_changes = 150,
+         },
+      }
+   end
 end
 
 M.setup_servers()
