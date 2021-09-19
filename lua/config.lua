@@ -3,14 +3,14 @@ M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
 
 -- non plugin ui configs, available without any plugins
 M.ui = {
-   italic_comments = false,
+   italic_comments = true,
 
    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
-   theme = "onedark",
+   theme = "onenord",
 
    -- theme toggler, toggle between two themes, see theme_toggleer mappings
    theme_toggler = {
-      enabled = false,
+      enabled = true,
       fav_themes = {
          "onedark",
          "one-light",
@@ -36,7 +36,7 @@ M.ui.plugin = {
       },
       shown = {},
       -- default, round , slant , block , arrow
-      style = "default",
+      style = "arrow",
    },
 }
 
@@ -70,14 +70,14 @@ M.options = {
 
 -- these are plugin related options
 M.options.plugin = {
-   autosave = false, -- autosave on changed text or insert mode leave
+   autosave = true, -- autosave on changed text or insert mode leave
    -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
    esc_insertmode_timeout = 300,
 }
 
 -- enable and disable plugins (false for disable)
 M.plugin_status = {
-   autosave = false, -- to autosave files
+   autosave = true, -- to autosave files
    blankline = true, -- beautified blank lines
    bufferline = true, -- buffer shown as tabs
    cheatsheet = true, -- fuzzy search your commands/keymappings
@@ -91,8 +91,8 @@ M.plugin_status = {
    neoformat = true, -- universal formatter
    neoscroll = true, -- smooth scroll
    telescope_media = false, -- see media files in telescope picker
-   truezen = false, -- no distraction mode for nvim
-   vim_fugitive = false, -- git in nvim
+   truezen = true, -- no distraction mode for nvim
+   vim_fugitive = true, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
 }
 
@@ -142,6 +142,11 @@ M.mappings.plugin = {
    bufferline = {
       next_buffer = "<TAB>", -- next buffer
       prev_buffer = "<S-Tab>", -- previous buffer
+      --better window movement
+      moveLeft = "<C-h>",
+      moveRight = "<C-l>",
+      moveUp = "<C-k>",
+      moveDown = "<C-j>",
    },
    chadsheet = {
       default_keys = "<leader>dk",
@@ -215,7 +220,7 @@ M.custom.mappings = {
 M.plugins = {
    lspconfig = {
       -- servers = {"html", "cssls"}
-      servers = {},
+      servers = { "sumneko_lua" },
    },
 }
 return M

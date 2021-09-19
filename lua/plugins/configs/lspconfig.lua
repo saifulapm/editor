@@ -56,20 +56,29 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
    },
 }
 
-local servers = require("core.utils").load_config().plugins.lspconfig.servers
+local M = {}
 
-for _, lsp in ipairs(servers) do
-   nvim_lsp[lsp].setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      -- root_dir = vim.loop.cwd,
-      flags = {
-         debounce_text_changes = 150,
-      },
-   }
+M.setup_servers = function()
+  local install_ok, lspinstall = pcall(require, "lspinstall")
+  if not install_ok then
+     return
+  end
+
+  lspinstall.setup()
+  local servers = lspinstall.installed_servers() 
+  for _, lsp in ipairs(servers) do
+     nvim_lsp[lsp].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        -- root_dir = vim.loop.cwd,
+        flags = {
+           debounce_text_changes = 150,
+        },
+     }
+  end
 end
 
--- require("anyfile").setup_luaLsp(on_attach, capabilities) -- this will be removed soon after the custom hooks PR
+M.setup_servers()
 
 -- replace the default lsp diagnostic symbols
 local function lspSymbol(name, icon)
@@ -108,3 +117,5 @@ vim.notify = function(msg, log_level, _opts)
       vim.api.nvim_echo({ { msg } }, true, {})
    end
 end
+
+return M
